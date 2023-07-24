@@ -2,10 +2,12 @@
   <div class="common-layout">
     <el-header class="common-header">
       <head-title class="title"></head-title>
-      <headMenu class="menu"></headMenu>
+      <headMenu class="headMenu"></headMenu>
     </el-header>
     <el-main class="common-main">
-      <router-view></router-view>
+      <el-scrollbar height="calc(100vh - 140px)">
+        <router-view></router-view>
+      </el-scrollbar>
     </el-main>
   </div>
 </template>
@@ -34,11 +36,8 @@ export default defineComponent({
     padding: 0;
     margin: 0;
     .title{
-      height: 80px;
-      margin-bottom: 10px;
-    }
-    .menu{
-      height: 50px;
+      height: 75px;
+      margin-bottom: 5px;
     }
     color: var(--text_color);
   }
