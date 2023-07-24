@@ -7,37 +7,51 @@
       text-color="var(--text_color)"
       active-text-color="var(--hover_color)"
     >
-      <el-menu-item index="1">Processing Center</el-menu-item>
-      <el-sub-menu index="2">
-        <template #title>Workspace</template>
-        <el-menu-item index="2-1">item one</el-menu-item>
-        <el-menu-item index="2-2">item two</el-menu-item>
-        <el-menu-item index="2-3">item three</el-menu-item>
-        <el-sub-menu index="2-4">
-          <template #title>item four</template>
-          <el-menu-item index="2-4-1">item one</el-menu-item>
-          <el-menu-item index="2-4-2">item two</el-menu-item>
-          <el-menu-item index="2-4-3">item three</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="3">Info</el-menu-item>
-      <el-menu-item index="4">Orders</el-menu-item>
+      <template v-for="(menu, index) in menuList" :key="index">
+        <subMenu :menu="menu"></subMenu>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue';
+import routes from "@/router/index";
+import subMenu from './subMenu.vue';
 
 export default defineComponent({
-  name: "menu",
+  name: "headMenu",
+  components: {
+    subMenu
+  },
   setup() {
+    console.log('router', routes)
     const data = reactive({
-      activeIndex: '1'
+      activeIndex: '/',
+      menuList: [
+        { name: "首页", path: "/", children: [] },
+        { name: "其他菜单", path: "/other", children: null },
+        { name: "一级菜单", path: "/1-1", children: [
+          { name: "二级菜单1", path: "2-1", children: [
+            { name: "三级菜单1", path: "3-1", children: null },
+            { name: "三级菜单2", path: "3-2", children: [
+              { name: "四级菜单1", path: "4-1", children: null }
+            ]},
+            { name: "三级菜单3", path: "3-3", children: null },
+            { name: "三级菜单4", path: "3-4", children: null },
+          ]},
+          { name: "二级菜单2", path: "2-2", children: null }
+        ]},
+      ]
     })
 
+    const handleSelect = (key: string, keyPath: string[]) => {
+      console.log(key, keyPath)
+    }
+
     return {
-      ...toRefs(data)
+      ...toRefs(data),
+      handleSelect
     }
   },
 })
