@@ -5,7 +5,9 @@
       <headMenu class="headMenu"></headMenu>
     </el-header>
     <el-main class="common-main">
-      <router-view></router-view>
+      <el-scrollbar height="calc(100vh - 140px)">
+        <router-view></router-view>
+      </el-scrollbar>
     </el-main>
   </div>
 </template>

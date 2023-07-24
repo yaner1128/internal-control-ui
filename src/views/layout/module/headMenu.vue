@@ -25,9 +25,9 @@ export default defineComponent({
     subMenu
   },
   setup() {
-    console.log('router', routes)
+    console.log('router', routes.currentRoute.value.path)
     const data = reactive({
-      activeIndex: '/',
+      activeIndex: routes.currentRoute.value.path === "/dashboard"  ? "/" : routes.currentRoute.value.path,
       menuList: [
         { name: "首页", path: "/", children: [] },
         { name: "其他菜单", path: "/other", children: null },
