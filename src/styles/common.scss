@@ -4,3 +4,54 @@
   --hover_color: #ffd04b;
   --text_color_black: #333;
 }
+
+.boxHeader {
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0 0 4px #cad2d9;
+  border: solid 1px #cad2d9;
+  color: val(--text_color_black);
+  background: -webkit-linear-gradient(bottom, #ebeff5, #f5f7fa);
+  margin: 0;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ic-ptBlue {
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0 0 4px #67baff;
+  color: var(--text_color);
+  border: solid 1px #4e96ff;
+  background: -webkit-linear-gradient(bottom, #6fbaff, #67baff);
+}
+
+.boxContent {
+  background: #fff;
+  border: 1px solid #dde4e4;
+  position: relative;
+  font-size: 14px;
+}
+
+.boxIcon {
+  width: 16px;
+  height: 19px;
+}
+
+.boxFlex {
+  display: flex;
+  align-items: center;
+}
+
+.btnIcon {
+  cursor: pointer;
+}
+
+// 字体超出省略...
+.textOmit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
