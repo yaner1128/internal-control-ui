@@ -51,7 +51,7 @@
                       content="Top Left prompts info"
                       placement="top-start"
                     >
-                      <div class="textOmit">三公经费未按规定要求申报，23年度二公经费大于22年度三公经费 单位301001-靖州苗族同族自治县水</div>
+                      <div class="textOmit" @click="showDetail">三公经费未按规定要求申报，23年度二公经费大于22年度三公经费 单位301001-靖州苗族同族自治县水</div>
                     </el-tooltip></el-col>
                   <el-col :span="6" style="text-align: right;">(2023-03-23)</el-col>
                 </el-row>
@@ -107,6 +107,9 @@
         <div class="boxContent"></div>
       </div>
     </div>
+    
+    <!-- 待办详情 -->
+    <detailView ref="detailViewRef"></detailView>
   </div>
 </template>
 
@@ -114,18 +117,26 @@
 import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
 import { Setting } from "@element-plus/icons-vue";
 import settingIconVue from './common/settingIcon.vue';
+import detailView from '@/views/details/index.vue'
 
 export default defineComponent({
   components: {
     Setting,
-    settingIconVue
+    settingIconVue,
+    detailView
   },
   setup() {
     const data = reactive({
       data:[1,2,3,4,5,6,7]
     })
+    const detailViewRef = ref();
+    const showDetail = () => {
+      detailViewRef.value.openDetails()
+    }
     return {
       ...toRefs(data),
+      detailViewRef,
+      showDetail
     }
   },
 })

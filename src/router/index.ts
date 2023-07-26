@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 /* Layout */
 import Layout from '@/views/layout/index.vue'
 
-const routes: Array<RouteRecordRaw> = [
+const routes: Array<any> = [
   {
     path: '/',
     component: Layout,
@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'dashboard',
-        component: () => import('@/views/Home.vue'),
+        component: () => import('@/views/home/index.vue'),
         name: '首页',
         meta: { title: '首页', icon: 'index', noCache: true, affix: true }
       }
