@@ -5,7 +5,7 @@
     content="Bottom Center prompts info"
     placement="bottom"
   >
-    <el-icon class="btnIcon" @click="btnSetting"><Setting /></el-icon>
+    <el-icon class="btnIcon" @click="btnSetting"><Tools /></el-icon>
   </el-tooltip>
   <!-- 组件 -->
   <limitDrawer ref="limitDrawerRef"></limitDrawer>
@@ -13,14 +13,14 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, toRefs } from "vue";
-import { Setting } from "@element-plus/icons-vue";
+import { Tools } from "@element-plus/icons-vue";
 import limitDrawer from './limitDrawer.vue'
 
 export default defineComponent({
   name: 'settingIcon',
   emits: ['reload'],
   components: {
-    Setting,
+    Tools,
     limitDrawer
   },
   props: {
