@@ -22,4 +22,4 @@ const customConfig = {
   }
 }
 
-export default Object.assign({}, globalConfig, customConfig[process.env.NODE_ENV || 'production'])
+export default Object.assign({}, globalConfig, customConfig[process.env.NODE_ENV])
