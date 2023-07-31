@@ -1,11 +1,9 @@
 import axios from 'axios'
-import { useRouter } from 'vue-router'
 import { ElNotification, ElMessageBox } from 'element-plus'
-import { useStore } from 'vuex'
 import { getToken } from '@/utils/auth'
 import Config from '@/config'
-const router = useRouter()
-const store = useStore()
+import router from '@/router/routers'
+import store from '@/store/index'
 
 // 创建axios实例
 const service = axios.create({

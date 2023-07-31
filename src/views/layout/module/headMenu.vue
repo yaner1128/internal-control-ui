@@ -1,57 +1,47 @@
 <template>
   <div class="menuBox">
     <el-menu
+      :show-timeout="200"
       mode="horizontal"
-      :default-active="activeIndex"
+      :unique-opened="true"
+      :default-active="$route.path"
       background-color="var(--main_color)"
       text-color="var(--text_color)"
       active-text-color="var(--hover_color)"
     >
-      <template v-for="(menu, index) in menuList" :key="index">
-        <subMenu :menu="menu"></subMenu>
-      </template>
+      <sidebar-item
+        v-for="route in permission_routers"
+        :key="route.path"
+        :item="route"
+        :base-path="route.path"
+      />
     </el-menu>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
-import routes from "@/router/index";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import subMenu from './subMenu.vue';
+import SidebarItem from "./SidebarItem.vue";
 
 export default defineComponent({
   name: "headMenu",
   components: {
+    SidebarItem,
     subMenu
   },
   setup() {
-    console.log('router', routes.currentRoute.value.path)
+    const store = useStore();
+    const router = useRouter();
     const data = reactive({
-      activeIndex: routes.currentRoute.value.path === "/dashboard"  ? "/" : routes.currentRoute.value.path,
-      menuList: [
-        { name: "首页", path: "/", children: [] },
-        { name: "其他菜单", path: "/other", children: null },
-        { name: "一级菜单", path: "/1-1", children: [
-          { name: "二级菜单1", path: "2-1", children: [
-            { name: "三级菜单1", path: "3-1", children: null },
-            { name: "三级菜单2", path: "3-2", children: [
-              { name: "四级菜单1", path: "4-1", children: null }
-            ]},
-            { name: "三级菜单3", path: "3-3", children: null },
-            { name: "三级菜单4", path: "3-4", children: null },
-          ]},
-          { name: "二级菜单2", path: "2-2", children: null }
-        ]},
-      ]
+      permission_routers: store.state.permission.routers,
+      activeIndex: router.currentRoute.value.path === "/dashboard"  ? "/" : router.currentRoute.value.path
     })
 
-    const handleSelect = (key: string, keyPath: string[]) => {
-      console.log(key, keyPath)
-    }
-
     return {
-      ...toRefs(data),
-      handleSelect
+      ...toRefs(data)
     }
   },
 })
@@ -68,5 +58,22 @@ export default defineComponent({
     height: 100%;
     border-bottom: none;
   }
+}
+</style>
+<style lang="scss" scoped>
+@import "~@/styles/variables.scss";
+.userInfoBox{
+  height: 150px;
+}
+.left-menu /deep/ {
+  .el-menu-item,
+  .el-sub-menu__title {
+    height: 50px;
+    line-height: 50px;
+  }
+}
+/deep/ .el-menu-item .el-menu-tooltip__trigger {
+  display: inline-block !important;
+  padding: 0 10px 0;
 }
 </style>

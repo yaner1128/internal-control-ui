@@ -6,19 +6,19 @@ const customConfig = {
     /**
      * @description 此处修改网站名称
      */
-    webName: '洪江市项目管理系统--开发环境'
+    webName: '财政内控系统 - 开发环境'
   },
   production: {
     /**
      * @description 此处修改网站名称
      */
-    webName: '洪江市项目管理系统'
+    webName: '财政内控系统'
   },
   demo: {
     /**
      * @description 此处修改网站名称
      */
-    webName: '洪江市项目管理系统-演示环境'
+    webName: '财政内控系统-演示环境'
   }
 }
 

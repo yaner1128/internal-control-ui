@@ -84,6 +84,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 /deep/ .el-tabs__content{
   overflow: inherit !important;
+  padding: 10px 15px;
 }
 .more{
   width: 80px;
