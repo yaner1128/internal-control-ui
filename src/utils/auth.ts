@@ -1,8 +1,6 @@
 import Cookies from 'js-cookie'
 import Config from '@/config'
 
-console.log('Config', Config)
-
 const TokenKey = Config.TokenKey
 
 export function getToken() {

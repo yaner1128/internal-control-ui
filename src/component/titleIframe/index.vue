@@ -14,12 +14,11 @@
 
 <script lang="ts">
 import { defineComponent, toRefs } from 'vue';
-import { Setting } from "@element-plus/icons-vue";
 import settingIconVue from '@/component/settingVue/index.vue';
 
 export default defineComponent({
+  name: "titleIframe",
   components: {
-    Setting,
     settingIconVue,
   },
   props: {
