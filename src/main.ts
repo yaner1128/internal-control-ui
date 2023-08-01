@@ -28,7 +28,13 @@ import SvgIcon from '@/component/SvgIcon/index.vue' // svg组件
 import directive from '@/component/permission/index'
 directive(app)
 
+import TitleIframe from '@/component/titleIframe/index.vue'
+// 分页组件
+import Pagination from '@/component/Pagination/index.vue'
+
 app.component('SvgIcon', SvgIcon)
+app.component('TitleIframe', TitleIframe)
+app.component('Pagination', Pagination)
 
 app.use(ElementPlus)
 app.use(useTable)

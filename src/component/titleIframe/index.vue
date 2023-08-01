@@ -41,7 +41,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   // padding: 0 10px;
-  margin-bottom: 10px;
+  margin: 10px;
   border-radius: 5px 5px 0 0;
   .title{
     width: 100%;
