@@ -11,7 +11,7 @@
         <el-table-column prop="title" label="标题" show-overflow-tooltip />
         <el-table-column prop="date" label="日期" align="center" width="140px" />
       </el-table>
-      <div class="more">更多<el-icon><DArrowRight /></el-icon></div>
+      <div class="more" @click="btnMoreWarn">更多<el-icon><DArrowRight /></el-icon></div>
     </el-tab-pane>
     <el-tab-pane label="待处理风险">
       <el-table
@@ -24,7 +24,7 @@
         <el-table-column prop="title" label="标题" show-overflow-tooltip />
         <el-table-column prop="date" label="日期" align="center" width="140px" />
       </el-table>
-      <div class="more">更多<el-icon><DArrowRight /></el-icon></div>
+      <div class="more" @click="btnRiskWarn">更多<el-icon><DArrowRight /></el-icon></div>
     </el-tab-pane>
     <el-tab-pane label="待处理任务">
       <el-table :data="tableData" :show-header="false" height="160px" :highlight-current-row="true">
@@ -37,6 +37,10 @@
     <latestReminder ref="latestReminderRef"></latestReminder>
     <!-- 待办详情 -->
     <pendingPro ref="detailViewRef"></pendingPro>
+    <!-- 最新提醒更多 -->
+    <moreWarnVue ref="moreWarnVueRef"></moreWarnVue>
+    <!-- 待处理风险更多 -->
+    <moreRiskVue ref="moreRiskVueRef"></moreRiskVue>
   </el-tabs>
 </template>
 
@@ -45,12 +49,16 @@ import { defineComponent, reactive, toRefs, ref } from 'vue';
 import { DArrowRight } from "@element-plus/icons-vue";
 import pendingPro from '../pendingPro/index.vue';
 import latestReminder from '../latestReminder/index.vue';
+import moreWarnVue from './component/moreWarn.vue';
+import moreRiskVue from './component/moreRisk.vue';
 
 export default defineComponent({
   components: {
     pendingPro,
     latestReminder,
-    DArrowRight
+    DArrowRight,
+    moreWarnVue,
+    moreRiskVue
   },
   setup() {
     const data = reactive({
@@ -70,12 +78,30 @@ export default defineComponent({
     const showDetail = (row: any) => {
       detailViewRef.value.openDetails(row.active)
     }
+
+    // 最新提醒 更多
+    const moreWarnVueRef = ref();
+    const btnMoreWarn = () => {
+      moreWarnVueRef.value.open()
+    }
+
+    // 待处理风险更多
+    const moreRiskVueRef = ref();
+    const btnRiskWarn = () => {
+      moreRiskVueRef.value.open()
+    }
+
+
     return {
       ...toRefs(data),
       latestReminderRef,
       showRemind,
       detailViewRef,
-      showDetail
+      showDetail,
+      btnMoreWarn,
+      moreWarnVueRef,
+      moreRiskVueRef,
+      btnRiskWarn
     }
   },
 })

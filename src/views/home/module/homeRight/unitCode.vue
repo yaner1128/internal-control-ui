@@ -34,11 +34,11 @@
       </ul>
       <!-- 内控规则 -->
       <ul class="lightInfo">
-        <li class="item">
+        <li class="item btnIcon" @click="btnArchitecture">
           <div class="lamp"></div>
           <div>内控组织架构</div>
         </li>
-        <li class="item">
+        <li class="item btnIcon" @click="btnSystem">
           <div class="lamp"></div>
           <div>内控制度体系</div>
         </li>
@@ -56,13 +56,23 @@
         </li>
       </ul>
     </div>
+    <!-- 内控组织架构组件 -->
+    <architectureVue ref="architectureVueRef"></architectureVue>
+    <!-- 内控制度体系组件 -->
+    <systemVue ref="systemVueRef"></systemVue>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs, ref } from 'vue'
+import architectureVue from './module/architecture.vue'
+import systemVue from './module/system.vue'
 
 export default defineComponent({
+  components: {
+    architectureVue,
+    systemVue
+  },
   name: "unitCode",
   setup() {
     const data = reactive({
@@ -77,8 +87,24 @@ export default defineComponent({
       ]
     })
 
+    // 点击内控组织架构
+    const architectureVueRef = ref();
+    const btnArchitecture = () => {
+      architectureVueRef.value.open()
+    }
+
+    // 点击内控制度体系
+     const systemVueRef = ref();
+     const btnSystem = () => {
+      systemVueRef.value.open()
+     }
+
     return {
-      ...toRefs(data)
+      ...toRefs(data),
+      btnArchitecture,
+      architectureVueRef,
+      btnSystem,
+      systemVueRef
     }
   },
 })

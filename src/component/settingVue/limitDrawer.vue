@@ -99,8 +99,8 @@
       </vxe-column>
     </vxe-table>
     <div class="drawer__footer">
-      <el-button @click="cancelForm">Cancel</el-button>
-      <el-button type="primary" :loading="loading" @click="onClick">Submit</el-button>
+      <el-button>Cancel</el-button>
+      <el-button type="primary">Submit</el-button>
     </div>
   </el-drawer>
 </template>
@@ -143,11 +143,11 @@ export default defineComponent({
         }
       ],
       checkList: {
-        check1: true,
+        check1: false,
         check2: false,
-        check3: true,
+        check3: false,
         check4: false,
-        check5: true,
+        check5: false,
         check6: false,
         check7: false,
         check8: false,
