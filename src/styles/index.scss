@@ -11,6 +11,11 @@
   list-style: none;
 }
 
+// 修改抽屉 标题 样式
+.el-drawer__header{
+  margin-bottom: 12px !important;
+}
+
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
