@@ -42,7 +42,7 @@
           <div class="lamp"></div>
           <div>内控制度体系</div>
         </li>
-        <li class="item">
+        <li class="item btnIcon" @click="btnEnvironment">
           <div class="lamp"></div>
           <div>内控基础环境</div>
         </li>
@@ -60,6 +60,8 @@
     <architectureVue ref="architectureVueRef"></architectureVue>
     <!-- 内控制度体系组件 -->
     <systemVue ref="systemVueRef"></systemVue>
+    <!-- 内控基础环境组件 -->
+    <environment ref="environmentRef"></environment>
   </div>
 </template>
 
@@ -67,11 +69,13 @@
 import { defineComponent, reactive, toRefs, ref } from 'vue'
 import architectureVue from './module/architecture.vue'
 import systemVue from './module/system.vue'
+import environment from './module/environment.vue'
 
 export default defineComponent({
   components: {
     architectureVue,
-    systemVue
+    systemVue,
+    environment
   },
   name: "unitCode",
   setup() {
@@ -94,17 +98,25 @@ export default defineComponent({
     }
 
     // 点击内控制度体系
-     const systemVueRef = ref();
-     const btnSystem = () => {
+    const systemVueRef = ref();
+    const btnSystem = () => {
       systemVueRef.value.open()
-     }
+    }
+
+    // 点击内控基础环境
+    const environmentRef = ref();
+    const btnEnvironment = () => {
+      environmentRef.value.open();
+    }
 
     return {
       ...toRefs(data),
       btnArchitecture,
       architectureVueRef,
       btnSystem,
-      systemVueRef
+      systemVueRef,
+      btnEnvironment,
+      environmentRef
     }
   },
 })
