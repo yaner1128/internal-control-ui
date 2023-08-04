@@ -29,11 +29,14 @@ import directive from '@/component/permission/index'
 directive(app)
 
 import TitleIframe from '@/component/titleIframe/index.vue'
+import TitleBox from '@/component/titleBox.vue'
+
 // 分页组件
 import Pagination from '@/component/Pagination/index.vue'
 
 app.component('SvgIcon', SvgIcon)
 app.component('TitleIframe', TitleIframe)
+app.component('TitleBox', TitleBox)
 app.component('Pagination', Pagination)
 
 app.use(ElementPlus)
